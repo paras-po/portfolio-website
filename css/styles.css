@@ -4482,20 +4482,25 @@ td:last-child {
  * caption
  * ------------------------------------------------------------------- */ 
 <style>
-  .media-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
-    justify-content: center;
-  }
+  /* Consistent frame size for both image and video containers */
+.media-container {
+  width: 100%;
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid #ccc; /* optional: visible frame */
+  border-radius: 8px;
+}
 
-  .media-container img,
-  .media-container video {
-    max-height: 85%;
-    width: auto;
-    object-fit: cover;
-  }
+/* Make images and videos fill the container */
+.media-container img,
+.media-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Keeps aspect ratio, fills frame */
+  display: block;
+}
+
 
   .caption {
     margin-top: 10px;
