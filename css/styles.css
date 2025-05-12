@@ -4535,3 +4535,129 @@ td:last-child {
 	font-size: 13px;
     color: white;
 }
+/*---------------------
+	GRA section
+-----------------------*/
+.position-details {
+    margin: 2rem 0;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.position-header {
+    border-bottom: 2px solid #2c3e50;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+
+.institution-duration {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.position-title {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    margin: 0;
+}
+
+.timeline {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #7f8c8d;
+}
+
+.responsibilities-list {
+    list-style: none;
+    padding: 0;
+}
+
+.responsibilities-list li {
+    padding: 1rem;
+    margin: 0.5rem 0;
+    background: #f8f9fa;
+    border-left: 4px solid #27ae60;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.project-card {
+    background: #ffffff;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.research-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.metric-item {
+    text-align: center;
+    padding: 1rem;
+    background: #3498db;
+    color: white;
+    border-radius: 8px;
+}
+
+.metric-value {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.section-subtitle {
+    color: #2c3e50;
+    margin-top: 2rem;
+    border-bottom: 2px solid #ecf0f1;
+    padding-bottom: 0.5rem;
+}
+
+.fa-university, .fa-calendar-alt, .fa-tasks {
+    margin-right: 0.5rem;
+    color: #27ae60;
+}
+/*---------------------
+	Forest ranger section
+-----------------------*/
+.forest-ranger-theme {
+    background: linear-gradient(135deg, #f8fff8 0%, #e8f5e9 100%);
+    border: 1px solid #c8e6c9;
+}
+
+.forest-ranger-theme .position-title {
+    color: #2e7d32;
+}
+
+.forest-ranger-theme .responsibilities-list li {
+    border-left-color: #388e3c;
+    background: #f1f8e9;
+}
+
+.forest-ranger-theme .section-subtitle {
+    color: #1b5e20;
+}
+
+.forest-metrics .metric-item {
+    background: #43a047;
+}
+
+.forest-ranger-theme .fa-tree,
+.forest-ranger-theme .fa-hiking,
+.forest-ranger-theme .fa-mountain {
+    color: #388e3c;
+}
+
+.forest-ranger-theme .project-card {
+    background: #e8f5e9;
+    border-left: 4px solid #81c784;
+}
