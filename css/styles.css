@@ -4661,3 +4661,72 @@ td:last-child {
     background: #e8f5e9;
     border-left: 4px solid #81c784;
 }
+
+
+/* Publications Section
+--------------------------------------------------*/
+.publication-grid {
+    display: grid;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.publication-item {
+    padding: 2rem;
+    background: var(--color-gray-1);
+    border-radius: 4px;
+    transition: transform 0.3s ease;
+}
+
+.publication-item:hover {
+    transform: translateY(-5px);
+}
+
+.pub-meta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.9em;
+    color: var(--color-text-light);
+}
+
+.pub-title {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.pub-authors {
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+}
+
+.pub-journal {
+    font-style: italic;
+    margin-bottom: 1.5rem;
+}
+
+.pub-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.btn--link svg {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+}
+
+
+/* Active State */
+[aria-expanded="true"] .toggle-icon {
+    transform: rotate(180deg);
+}
+
+[aria-expanded="true"] + .abstract-content {
+    max-height: 500px; /* Adjust based on abstract length */
+    padding: 1rem;
+}
+#publications {
+    padding-top: calc(var(--header-height, 80px) + 40px);
+}
