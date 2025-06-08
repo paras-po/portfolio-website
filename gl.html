@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gallery - Prakash Ojha</title>
+    
+    <script>
+        document.documentElement.classList.remove('no-js');
+        document.documentElement.classList.add('js');
+    </script>
+    
+    <style>
+        /* Base styles from your portfolio */
+        :root {
+            --color-body: #1a1a1a;
+            --color-text: #ffffff;
+            --color-text-light: rgba(255, 255, 255, 0.7);
+            --color-primary: #ff7e5f;
+            --color-secondary: #feb47b;
+            --color-bg-dark: #0d0d0d;
+            --color-bg-medium: #1a1a1a;
+            --color-bg-light: #262626;
+            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: var(--color-body);
+            color: var(--color-text);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        a {
+            color: var(--color-primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        a:hover {
+            color: var(--color-secondary);
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header styles */
+        .s-header {
+            background-color: var(--color-bg-dark);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+        }
+        
+        .s-header__inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .s-header__logo img {
+            height: 50px;
+        }
+        
+        .s-header__menu-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .s-header__menu-links li a {
+            color: var(--color-text);
+            font-weight: 500;
+            font-size: 1.1rem;
+            position: relative;
+        }
+        
+        .s-header__menu-links li a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-primary);
+            transition: width 0.3s ease;
+        }
+        
+        .s-header__menu-links li a:hover:after {
+            width: 100%;
+        }
+        
+        /* Gallery Section */
+        .s-gallery {
+            padding: 100px 0;
+            min-height: 100vh;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-header h2 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+        }
+        
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--color-text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            aspect-ratio: 4/3;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            z-index: 10;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .video-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+            opacity: 0.8;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .gallery-item:hover .video-icon {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 20px 15px 10px;
+            font-size: 1.1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        /* Lightbox Styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+        
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+        
+        .lightbox-content img, 
+        .lightbox-content video {
+            max-width: 100%;
+            max-height: 85vh;
+            border-radius: 10px;
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
+        }
+        
+        .lightbox-content video {
+            background: #000;
+            width: 80vw;
+            height: auto;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 3rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 2001;
+        }
+        
+        .close-btn:hover {
+            color: var(--color-primary);
+            transform: scale(1.1);
+        }
+        
+        /* Footer styles */
+        .s-footer {
+            background-color: var(--color-bg-dark);
+            padding: 60px 0 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .s-footer__content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .s-footer__social {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .s-footer__social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: var(--color-bg-medium);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .s-footer__social a:hover {
+            background: var(--color-primary);
+            transform: translateY(-5px);
+        }
+        
+        .copyright-section {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--color-text-light);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .s-header__menu-links {
+                gap: 15px;
+            }
+            
+            .section-header h2 {
+                font-size: 2.5rem;
+            }
+            
+            .s-gallery {
+                padding: 60px 0;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .s-header__inner {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .s-header__menu-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body id="top">
+    
+
+    <!-- Gallery Section -->
+    <section class="s-gallery target-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Research Gallery</h2>
+                <p>Explore my fieldwork, research projects, and academic journey through photos and videos</p>
+            </div>
+
+            <div class="gallery-grid">
+                <!-- Your local photos -->
+                <div class="gallery-item" data-type="image" data-src="media/fri.jpg">
+                    <img src="media/fri.jpg" alt="Field Research Image">
+                    <div class="gallery-caption">At FRI, India</div>
+                </div>
+                
+                <div class="gallery-item" data-type="image" data-src="media/bcngulmi.jpg">
+                    <img src="media/bcngulmi.jpg" alt="Taking certificate of participation in a program organized by BCN Gulmi, Nepal">
+                    <div class="gallery-caption">Taking certificate of participation in a program organized by BCN Gulmi, Nepal</div>
+                </div>
+                
+                <div class="gallery-item" data-type="image" data-src="gl/turtle.JPG">
+                    <img src="gl/turtle.JPG" alt="butterfly">
+                    <div class="gallery-caption">turtle</div>
+                </div>
+                
+                <!-- Videos -->
+                <div class="gallery-item" data-type="video" data-src="gl/water.mp4">
+                    <img src="gl/waterthumbnail.jpg" alt="Research Presentation">
+                    <div class="video-icon"><i class="fas fa-play-circle"></i></div>
+                    <div class="gallery-caption"></div>
+                </div>
+                
+                <div class="gallery-item" data-type="image" data-src="gl/flower.JPG">
+                    <img src="gl/flower.JPG" alt="Landscape Analysis">
+                    <div class="gallery-caption">flower</div>
+                </div>
+                  <div class="gallery-item" data-type="video" data-src="gl/butterfly.mp4">
+                    <img src="gl/butterflythumbnail.jpg" alt="Research Presentation">
+                    <div class="video-icon"><i class="fas fa-play-circle"></i></div>
+                    <div class="gallery-caption"></div>
+                </div>
+                                              
+                <div class="gallery-item" data-type="video" data-src="gl/droneTakeoff.mp4">
+                    <img src="gl/droneflythumbnail.jpg" alt="Data Analysis Process">
+                    <div class="video-icon"><i class="fas fa-play-circle"></i></div>
+                    <div class="gallery-caption">DJI Phantom 4 Pro Drone Take off</div>
+                </div>
+                                            
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content" id="lightbox-content">
+            <!-- Content will be inserted here by JavaScript -->
+        </div>
+        <span class="close-btn" id="close-btn">&times;</span>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxContent = document.getElementById('lightbox-content');
+            const closeBtn = document.getElementById('close-btn');
+            
+            // Open lightbox when a gallery item is clicked
+            galleryItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const mediaType = this.getAttribute('data-type');
+                    const mediaSrc = this.getAttribute('data-src');
+                    const caption = this.querySelector('.gallery-caption').textContent;
+                    
+                    let mediaElement;
+                    if (mediaType === 'image') {
+                        mediaElement = document.createElement('img');
+                        mediaElement.src = mediaSrc;
+                        mediaElement.alt = caption;
+                    } else if (mediaType === 'video') {
+                        mediaElement = document.createElement('video');
+                        mediaElement.src = mediaSrc;
+                        mediaElement.controls = true;
+                        mediaElement.autoplay = true;
+                        mediaElement.style.width = '80vw';
+                        mediaElement.style.maxHeight = '80vh';
+                    }
+                    
+                    // Create caption element
+                    const captionElement = document.createElement('div');
+                    captionElement.className = 'lightbox-caption';
+                    captionElement.textContent = caption;
+                    captionElement.style.cssText = `
+                        color: white;
+                        text-align: center;
+                        margin-top: 15px;
+                        font-size: 1.2rem;
+                    `;
+                    
+                    // Clear previous content and add new media
+                    lightboxContent.innerHTML = '';
+                    lightboxContent.appendChild(mediaElement);
+                    lightboxContent.appendChild(captionElement);
+                    
+                    // Show lightbox
+                    lightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+            
+            // Close lightbox when close button is clicked
+            closeBtn.addEventListener('click', function() {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+            
+            // Close lightbox when clicking outside content
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) {
+                    lightbox.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            // Close with ESC key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                    lightbox.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
