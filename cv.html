@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Curriculum Vitae - Prakash Ojha</title>
+
+    <script>
+        document.documentElement.classList.remove('no-js');
+        document.documentElement.classList.add('js');
+    </script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <style>
+        /* Tree Branches Theme Styles */
+        .tree-cv-hero {
+            background: linear-gradient(135deg, #2d5a27 0%, #3e7c3a 100%);
+            color: white;
+            padding: 4rem 0 3rem;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tree-cv-hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" opacity="0.1"><path d="M50,10 C60,20 70,25 80,30 C85,35 90,40 90,50 C90,60 85,65 80,70 C70,75 60,80 50,85 C40,80 30,75 20,70 C15,65 10,60 10,50 C10,40 15,35 20,30 C30,25 40,20 50,10 Z" fill="white"/></svg>');
+            background-size: 200px;
+            opacity: 0.1;
+        }
+        
+        .tree-cv-hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .tree-cv-title {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .tree-cv-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .tree-cv-contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        
+        .tree-cv-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+        
+        .tree-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+        }
+        
+        .tree-trunk {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            background: #8B4513;
+            top: 0;
+            bottom: 0;
+            z-index: 1;
+            border-radius: 6px;
+        }
+        
+        .branch-section {
+            position: relative;
+            margin-bottom: 4rem;
+            display: flex;
+            min-height: 200px;
+        }
+        
+        .branch-left {
+            justify-content: flex-start;
+        }
+        
+        .branch-right {
+            justify-content: flex-end;
+        }
+        
+        .branch-content {
+            width: 45%;
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 2;
+            border-left: 5px solid #3e7c3a;
+        }
+        
+        .branch-right .branch-content {
+            border-left: none;
+            border-right: 5px solid #3e7c3a;
+        }
+        
+        .branch-connector {
+            position: absolute;
+            width: 100px;
+            height: 2px;
+            background: #8B4513;
+            top: 50%;
+            z-index: 1;
+        }
+        
+        .branch-left .branch-connector {
+            right: -100px;
+        }
+        
+        .branch-right .branch-connector {
+            left: -100px;
+        }
+        
+        .branch-node {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #3e7c3a;
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 3;
+            border: 4px solid white;
+            box-shadow: 0 0 0 2px #8B4513;
+        }
+        
+        .branch-left .branch-node {
+            right: -110px;
+        }
+        
+        .branch-right .branch-node {
+            left: -110px;
+        }
+        
+        .branch-section-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #2d5a27;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .branch-section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #3e7c3a;
+            border-radius: 2px;
+        }
+        
+        .leaf-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px dashed #e0e0e0;
+            position: relative;
+        }
+        
+        .leaf-item:last-child {
+            border-bottom: none;
+        }
+        
+        .leaf-item:before {
+            content: '🍃';
+            position: absolute;
+            left: -25px;
+            top: 0;
+            font-size: 1.2rem;
+        }
+        
+        .leaf-date {
+            font-weight: 600;
+            color: #2d5a27;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+            background: #e8f5e9;
+            padding: 0.2rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .leaf-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .leaf-subtitle {
+            color: #666;
+            margin-bottom: 0.5rem;
+            font-style: italic;
+        }
+        
+        .leaf-description {
+            margin-top: 0.5rem;
+        }
+        
+        .leaf-list {
+            list-style: none;
+            padding-left: 1rem;
+        }
+        
+        .leaf-list li {
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+        
+        .leaf-list li:before {
+            content: '🌿';
+            position: absolute;
+            left: -1.5rem;
+        }
+        
+        .tree-skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .skill-leaf {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-top: 3px solid #3e7c3a;
+            transition: transform 0.3s ease;
+        }
+        
+        .skill-leaf:hover {
+            transform: translateY(-5px);
+        }
+        
+        .skill-leaf h3 {
+            margin-top: 0;
+            color: #2d5a27;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 0.5rem;
+        }
+        
+        .tree-publications {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .publication-leaf {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #e0e0e0;
+            position: relative;
+        }
+        
+        .publication-leaf:last-child {
+            border-bottom: none;
+        }
+        
+        .publication-leaf:before {
+            content: '📗';
+            position: absolute;
+            left: -25px;
+            top: 0;
+            font-size: 1.2rem;
+        }
+        
+        .publication-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .publication-authors {
+            font-style: italic;
+            margin-bottom: 0.5rem;
+            color: #666;
+        }
+        
+        .publication-journal {
+            margin-bottom: 0.5rem;
+        }
+        
+        .publication-link {
+            color: #2d5a27;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        
+        .publication-link:hover {
+            text-decoration: underline;
+        }
+        
+        .tree-awards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .award-acorn {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-left: 4px solid #8B4513;
+            position: relative;
+        }
+        
+        .award-acorn:before {
+            content: '🌰';
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .award-year {
+            font-weight: 600;
+            color: #8B4513;
+            margin-bottom: 0.5rem;
+        }
+        
+        .award-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .award-org {
+            color: #666;
+        }
+        
+        .tree-download {
+            text-align: center;
+            margin: 4rem 0;
+        }
+        
+        .btn-tree {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #2d5a27;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .btn-tree:hover {
+            background: #1e3f1a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+        }
+        
+        @media (max-width: 768px) {
+            .tree-trunk {
+                display: none;
+            }
+            
+            .branch-section {
+                justify-content: center !important;
+            }
+            
+            .branch-content {
+                width: 90%;
+            }
+            
+            .branch-connector, .branch-node {
+                display: none;
+            }
+            
+            .tree-cv-title {
+                font-size: 2.5rem;
+            }
+            
+            .tree-cv-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .tree-cv-contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .tree-skills, .tree-awards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body id="top">
+    <!-- preloader -->
+    <div id="preloader">
+        <div id="loader" class="dots-fade">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <!-- page wrap -->
+    <div id="page" class="s-pagewrap">
+        <!-- site header -->
+        <header class="s-header">
+            <div class="row s-header__inner">
+                <div class="s-header__block">
+                    <div class="s-header__logo">
+                        <a class="logo" href="index.html">
+                            <img src="images/PO.svg" alt="Homepage">
+                        </a>
+                    </div>
+                    <a class="s-header__menu-toggle" href="#0"><span>Menu</span></a>
+                </div>
+
+                <nav class="s-header__nav">    
+                    <ul class="s-header__menu-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li class="current"><a href="cv.html">CV</a></li>
+                        <li><a href="index.html#works">Research</a></li>
+                        <li><a href="index.html#gallery">Gallery</a></li>
+                        <li><a href="index.html#footer">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Tree CV Hero Section -->
+        <section class="tree-cv-hero">
+            <div class="tree-cv-hero-content">
+                <h1 class="tree-cv-title">PRAKASH OJHA</h1>
+                <p class="tree-cv-subtitle">Forestry Professional & Researcher</p>
+                
+                <div class="tree-cv-contact-info">
+                    <div class="tree-cv-contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>prakashojha403@gmail.com</span>
+                    </div>
+                    <div class="tree-cv-contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+1 (334) 744-3788</span>
+                    </div>
+                    <div class="tree-cv-contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>333 E. Magnolia Ave, Auburn, AL, 36830</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tree CV Content -->
+        <main class="tree-container">
+            <div class="tree-trunk"></div>
+            
+            <!-- Objective Section -->
+            <section class="branch-section branch-left">
+                <div class="branch-content">
+                    <h2 class="branch-section-title">Career Objective</h2>
+                    <div class="leaf-item">
+                        <p>To develop a career in forest operations and forest management, leveraging my expertise in silviculture, GIS, conservation research, and data analysis to contribute to sustainable forest management practices and conservation initiatives.</p>
+                    </div>
+                </div>
+                <div class="branch-connector"></div>
+                <div class="branch-node"></div>
+            </section>
+
+            <!-- Education Section -->
+            <section class="branch-section branch-right">
+                <div class="branch-content">
+                    <h2 class="branch-section-title">Education</h2>
+                    
+                    <div class="leaf-item">
+                        <div class="leaf-date">2025 - Present</div>
+                        <div class="leaf-title">Master of Science in Forestry</div>
+                        <div class="leaf-subtitle">Auburn University, Auburn, AL, USA</div>
+                    </div>
+                    
+                    <div class="leaf-item">
+                        <div class="leaf-date">2018 - 2023</div>
+                        <div class="leaf-title">Bachelor of Science in Forestry</div>
+                        <div class="leaf-subtitle">Tribhuvan University, Institute of Forestry, Nepal</div>
+                        <div class="leaf-description">
+                            <p><strong>Aggregate Percentage: 77.54%</strong></p>
+                            <p><em>Thesis:</em> "Comparison of regeneration status and diversity between sustainable and conventionally managed forest in Kailali, Nepal"</p>
+                        </div>
+                    </div>
+                    
+                    <div class="leaf-item">
+                        <div class="leaf-date">2016 - 2018</div>
+                        <div class="leaf-title">Intermediate of Science</div>
+                        <div class="leaf-subtitle">National Academy of Science and Technology, Dhangadhi, Kailali</div>
+                        <div class="leaf-description">
+                            <p><strong>CGPA: 3.46</strong></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="branch-connector"></div>
+                <div class="branch-node"></div>
+            </section>
+
+            <!-- Professional Experience Section -->
+            <section class="branch-section branch-left">
+                <div class="branch-content">
+                    <h2 class="branch-section-title">Professional Experience</h2>
+                    
+                    <div class="leaf-item">
+                        <div class="leaf-date">January 2025 - Present</div>
+                        <div class="leaf-title">Graduate Research Assistant</div>
+                        <div class="leaf-subtitle">College of Forestry, Wildlife and Environment, Auburn University</div>
+                    </div>
+                    
+                    <div class="leaf-item">
+                        <div class="leaf-date">January 2024 - December 2024</div>
+                        <div class="leaf-title">Forest Ranger</div>
+                        <div class="leaf-subtitle">Division Forest Office, Gulmi, Nepal</div>
+                        <div class="leaf-description">
+                            <ul class="leaf-list">
+                                <li>Worked as a conservationist for Resunga Conservation Forest area, Gulmi, Nepal</li>
+                                <li>Developed Operation Plans (Ops) based on silviculture system for different Community forests inside Gulmi district</li>
+                                <li>Provided technical assistance in forest conservation and management activities</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="leaf-item">
+                        <div class="leaf-date">August 2022 - January 2024</div>
+                        <div class="leaf-title">Research Assistant</div>
+                        <div class="leaf-subtitle">Care for Nature</div>
+                        <div class="leaf-description">
+                            <ul class="leaf-list">
+                                <li>Conducted research, data analysis and report writing</li>
+                                <li>Collaborated with local authorities</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="branch-connector"></div>
+                <div class="branch-node"></div>
+            </section>
+
+            <!-- Skills Section -->
+            <section class="branch-section branch-right">
+                <div class="branch-content">
+                    <h2 class="branch-section-title">Technical Skills</h2>
+                    <div class="tree-skills">
+                        <div class="skill-leaf">
+                            <h3>GIS & Spatial Analysis</h3>
+                            <ul class="leaf-list">
+                                <li>Google Earth Engine (GEE)</li>
+                                <li>ArcGIS Pro</li>
+                                <li>GPS Handling</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="skill-leaf">
+                            <h3>Data Analysis</h3>
+                            <ul class="leaf-list">
+                                <li>R Studio</li>
+                                <li>JMP</li>
+                                <li>Microsoft Office Packages</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="skill-leaf">
+                            <h3>Field Research</h3>
+                            <ul class="leaf-list">
+                                <li>Forest Inventory</li>
+                                <li>Species Identification</li>
+                                <li>Data Collection Protocols</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="branch-connector"></div>
+                <div class="branch-node"></div>
+            </section>
+
+            <!-- Awards & Grants Section -->
+            <section class="branch-section branch-left">
+                <div class="branch-content">
+                    <h2 class="branch-section-title">Grants & Awards</h2>
+                    <div class="tree-awards">
+                        <div class="award-acorn">
+                            <div class="award-year">2025</div>
+                            <div class="award-title">Full Scholarship</div>
+                            <div class="award-org">Auburn University</div>
+                            <p>To pursue MS Forestry degree</p>
+                        </div>
+                        
+                        <div class="award-acorn">
+                            <div class="award-year">2023</div>
+                            <div class="award-title">Research Grant</div>
+                            <div class="award-org">The Explorers Club, British Herpetological Society and Idea Wild</div>
+                            <p>For the project "Distribution, Activity Pattern and Conservation Threats of Varanus flavescens in Ghodaghodi Lake Complex"</p>
+                        </div>
+                        
+                        <div class="award-acorn">
+                            <div class="award-year">2023</div>
+                            <div class="award-title">Research Grant</div>
+                            <div class="award-org">Integrated Landscape Management to Secure Nepal's Protected Areas and Corridors</div>
+                            <p>To conduct B.Sc. project paper</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="branch-connector"></div>
+                <div class="branch-node"></div>
+            </section>
+
+            <!-- Publications Section -->
+            <section class="branch-section branch-right">
+                <div class="branch-content">
+                    <h2 class="branch-section-title">Publications</h2>
+                    <ul class="tree-publications">
+                        <li class="publication-leaf">
+                            <div class="publication-title">Agroforestry and traditional knowledge: Lessons from indigenous practices in South Asian Countries: A review</div>
+                            <div class="publication-authors">Dahal, R. P., Kafle, S., Khanal, K., KC, S., Subedi, M., <strong>Ojha, P.</strong>, & Din, H. U.</div>
+                            <div class="publication-journal">Archives of Agriculture and Environmental Science, 10(1), 189-196</div>
+                            <a href="https://doi.org/10.26832/24566632.2025.1001027" class="publication-link" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> View Publication
+                            </a>
+                        </li>
+                        
+                        <li class="publication-leaf">
+                            <div class="publication-title">Impact of silviculture system on regeneration status and species diversity: reflection from far-western lowland, Nepal</div>
+                            <div class="publication-authors"><strong>Ojha, P.</strong>, Acharya, K. R., Subedi, A., & Regmi, S.</div>
+                            <div class="publication-journal">Banko Janakari, 33(2), 24-37</div>
+                            <a href="https://doi.org/10.3126/banko.v33i2.58280" class="publication-link" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> View Publication
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="branch-connector"></div>
+                <div class="branch-node"></div>
+            </section>
+            
+            <div class="tree-download">
+                <a href="media/CV_Ojha_Prakash.pdf" class="btn-tree">
+                    <i class="fas fa-download"></i>
+                    Download Full CV (PDF)
+                </a>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer id="footer" class="s-footer target-section">
+            <!-- Your existing footer code would go here -->
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
